@@ -112,7 +112,8 @@ void display_init(void) {
         .on_color_trans_done = notify_lvgl_flush_ready,
     };
     esp_lcd_panel_io_register_event_callbacks(io_handle, &io_cbs, disp);
+}
 
-    // 9. start LVGL task
+void display_start(void) {
     xTaskCreate(lvgl_port_task, "LVGL", 4096, NULL, 5, NULL);
 }
